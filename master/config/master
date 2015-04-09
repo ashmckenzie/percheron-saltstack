@@ -1,0 +1,16 @@
+log_level: debug
+state_output: mixed
+
+file_roots:
+  base:
+    - /srv/salt/states/base
+
+pillar_roots:
+  base:
+    - /srv/salt/pillars/base
+  private:
+    - /srv/salt/vagrant/pillars/private
+
+reactor:
+  - 'minion_start':
+    - salt://reactor/sync_grains.sls

@@ -1,0 +1,30 @@
+---
+docker:
+  host: "https://boot2docker:2376"
+
+stacks:
+  -
+    name: saltstack
+    description: SaltStack cluster
+    containers:
+
+      -
+        name: base
+        version: 1.0.0
+        dockerfile: ./base/Dockerfile
+        startable: false
+
+      -
+        name: master1
+        version: 1.0.0
+        dockerfile: ./master/Dockerfile
+        dependant_container_names:
+          - base
+
+      -
+        name: minion1
+        version: 1.0.0
+        dockerfile: ./minion/Dockerfile
+        dependant_container_names:
+          - base
+          - master1
