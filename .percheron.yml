@@ -6,7 +6,7 @@ stacks:
   -
     name: saltstack
     description: SaltStack cluster
-    containers:
+    units:
 
       -
         name: base
