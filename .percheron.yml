@@ -1,29 +1,27 @@
 ---
 docker:
   host: "https://boot2docker:2376"
+  ssl_verify_peer: false
 
 stacks:
   -
     name: saltstack
-    description: SaltStack cluster
+    description: SaltStack cluster with one master and two minions
     units:
-
-      -
-        name: base
+      - name: base
         version: 1.0.0
-        dockerfile: ./base/Dockerfile
+        dockerfile: ./_base/Dockerfile
         startable: false
 
-      -
-        name: master1
+      - name: master1
         version: 1.0.0
         dockerfile: ./master/Dockerfile
         dependant_unit_names:
           - base
 
-      -
-        name: minion1
+      - name: minion
         version: 1.0.0
+        instances: 2
         dockerfile: ./minion/Dockerfile
         dependant_unit_names:
           - base
