@@ -6,7 +6,7 @@ This repo contains a complete SaltStack for use with [Percheron](https://github.
 
 * base (just an image, used by all containers)
 * master1
-* minion1
+* minion x2
 
 ## Dependancies
 
