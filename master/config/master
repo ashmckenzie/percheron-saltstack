@@ -1,16 +1,36 @@
-log_level: debug
+log_level: info
 state_output: mixed
+
+cachedir: /var/cache/salt/master
+log_file: /var/log/salt/master.log
 
 file_roots:
   base:
-    - /srv/salt/states/base
+  - /data/salt/states/base
 
 pillar_roots:
   base:
-    - /srv/salt/pillars/base
+    - /data/salt/pillars/base
   private:
-    - /srv/salt/vagrant/pillars/private
+    - /data/salt/pillars/private
 
 reactor:
-  - 'minion_start':
-    - salt://reactor/sync_grains.sls
+  - minion_start:
+    - /data/salt/reactor/sync_grains.sls
+  - salt/minion/*/start:
+    - /data/salt/reactor/highstate_run.sls
+  - salt/netapi/hook/upgrade:
+    - /data/salt/reactor/upgrade.sls
+
+rest_cherrypy:
+  host: 0.0.0.0
+  port: 8000
+  disable_ssl: true
+  webhook_disable_auth: true
+
+external_auth:
+  pam:
+    salt:
+      - .*
+      - '@runner'
+      - '@wheel'
