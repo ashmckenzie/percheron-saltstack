@@ -1,5 +1,4 @@
-#!/bin/bash
+#!/bin/sh -e
 
 exec 2>&1
-
-exec salt-minion -l debug 2>&1
+exec /usr/bin/salt-minion 2>&1

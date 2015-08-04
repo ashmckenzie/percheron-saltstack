@@ -1,5 +1,4 @@
-#!/bin/bash
+#!/bin/sh -e
 
 exec 2>&1
-
-exec salt-master -l debug 2>&1
+exec /usr/bin/salt-master 2>&1
