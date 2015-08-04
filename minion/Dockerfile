@@ -3,14 +3,11 @@ MAINTAINER ash@the-rebellion.net
 
 ADD config/minion /etc/salt/minion
 
-# Services
-#
-RUN mkdir -p /etc/service/salt-minion
-ADD ./services/salt-minion.sh /etc/service/salt-minion/run
-RUN chmod 755 /etc/service/*/run
+RUN mkdir -p /etc/sv/salt-minion
+ADD ./services/salt-minion.sh /etc/sv/salt-minion/run
+RUN ln -nfs /etc/sv/* /etc/service/
+RUN chmod 755 /etc/sv/*/run
 
-# Cleanup
-#
-RUN apt-get clean
+VOLUME [ "/var/log" ]
 
-CMD [ "/sbin/my_init" ]
+CMD [ "/sbin/runsvdir", "-P", "/etc/service" ]

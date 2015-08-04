@@ -1,20 +1,18 @@
 FROM saltstack_base:1.0.0
 MAINTAINER ash@the-rebellion.net
 
-ADD config/minion /etc/salt/minion
 ADD config/master /etc/salt/master
 
-RUN mkdir -p /srv/salt
+RUN mkdir -p /etc/sv/salt-master /etc/sv/salt-api /var/log/salt
+ADD ./services/salt-api.sh /etc/sv/salt-api/run
+ADD ./services/salt-master.sh /etc/sv/salt-master/run
+RUN ln -nfs /etc/sv/* /etc/service/
+RUN chmod 755 /etc/sv/*/run
 
-# Services
-#
-RUN mkdir -p /etc/service/salt-minion /etc/service/salt-master
-ADD ./services/salt-minion.sh /etc/service/salt-minion/run
-ADD ./services/salt-master.sh /etc/service/salt-master/run
-RUN chmod 755 /etc/service/*/run
+RUN adduser salt -D && echo 'salt:s4lt3dc4r4m3l' | chpasswd
 
-# Cleanup
-#
-RUN apt-get clean
+EXPOSE 4505 4506 8000
 
-CMD [ "/sbin/my_init" ]
+VOLUME [ "/var/log", "/var/cache", "/data" ]
+
+CMD [ "/sbin/runsvdir", "-P", "/etc/service" ]
