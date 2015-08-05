@@ -1,4 +1,7 @@
 ---
+secrets_file: ./.secrets.yml
+userdata:
+  salt_version: 2015.8.0rc3
 stacks:
   - name: saltstack
     description: SaltStack cluster with one master and two minions

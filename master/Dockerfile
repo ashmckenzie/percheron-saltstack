@@ -9,7 +9,7 @@ ADD ./services/salt-master.sh /etc/sv/salt-master/run
 RUN ln -nfs /etc/sv/* /etc/service/
 RUN chmod 755 /etc/sv/*/run
 
-RUN adduser salt -D && echo 'salt:s4lt3dc4r4m3l' | chpasswd
+RUN adduser salt -D && echo "salt:{{ secrets.salt_user_password }}" | chpasswd
 
 EXPOSE 4505 4506 8000
 

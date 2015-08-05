@@ -1,3 +1,4 @@
 .envrc
+.secrets.yml
 tmp
 base/config/pki
