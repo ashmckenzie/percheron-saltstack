@@ -12,7 +12,7 @@ GEM
     liquid (3.0.6)
     metastore (0.3.0)
     naught (1.0.0)
-    percheron (0.7.13)
+    percheron (0.7.15)
       clamp (~> 1.0.0)
       docker-api (~> 1.22.0)
       hashie (~> 3.4.0)
