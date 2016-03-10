@@ -1,6 +1,8 @@
 log_level: info
 state_output: mixed
 
+autosign_file: /etc/salt/autosign.conf
+
 cachedir: /var/cache/salt/master
 log_file: /var/log/salt/master.log
 
@@ -17,8 +19,6 @@ pillar_roots:
 reactor:
   - minion_start:
     - /data/salt/reactor/sync_grains.sls
-  - salt/minion/*/start:
-    - /data/salt/reactor/highstate_run.sls
   - salt/netapi/hook/upgrade:
     - /data/salt/reactor/upgrade.sls
 

@@ -31,5 +31,5 @@ git clone https://github.com/ashmckenzie/percheron-saltstack
 Run Percheron!
 
 ```shell
-cd percheron-torrent && bundle install && bundle exec percheron start saltstack
+cd percheron-saltstack && bundle install && bundle exec percheron start saltstack
 ```

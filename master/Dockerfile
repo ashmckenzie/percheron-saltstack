@@ -11,6 +11,8 @@ RUN chmod 755 /etc/sv/*/run
 
 RUN adduser salt -D && echo "salt:{{ secrets.salt_user_password }}" | chpasswd
 
+RUN echo '*' > /etc/salt/autosign.conf
+
 EXPOSE 4505 4506 8000
 
 VOLUME [ "/var/log", "/var/cache", "/data" ]

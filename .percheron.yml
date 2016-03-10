@@ -1,7 +1,7 @@
 ---
 secrets_file: ./.secrets.yml
 userdata:
-  salt_version: 2015.8.0rc3
+  salt_version: 2015.8.7
 stacks:
   - name: saltstack
     description: SaltStack cluster with one master and two minions
@@ -28,6 +28,7 @@ stacks:
       - name: minion
         version: 1.0.0
         dockerfile: ./minion/Dockerfile
+        instances: 2
         volumes:
           - /data/salt/minion/logs:/var/log
         dependant_unit_names:

@@ -2,17 +2,17 @@ GEM
   remote: https://rubygems.org/
   specs:
     clamp (1.0.0)
-    docker-api (1.22.2)
+    docker-api (1.22.4)
       excon (>= 0.38.0)
       json
-    excon (0.45.4)
-    hashie (3.4.2)
-    highline (1.7.3)
+    excon (0.48.0)
+    hashie (3.4.3)
+    highline (1.7.8)
     json (1.8.3)
     liquid (3.0.6)
     metastore (0.3.0)
     naught (1.0.0)
-    percheron (0.7.15)
+    percheron (0.8.1)
       clamp (~> 1.0.0)
       docker-api (~> 1.22.0)
       hashie (~> 3.4.0)
@@ -31,7 +31,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  percheron (~> 0.7.0)
+  percheron
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
