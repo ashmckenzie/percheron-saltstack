@@ -2,6 +2,10 @@
 
 This repo contains a complete SaltStack for use with [Percheron](https://github.com/ashmckenzie/percheron).
 
+## Diagram
+
+![SaltStack](https://raw.githubusercontent.com/ashmckenzie/percheron-saltstack/master/percheron_saltstack.png)
+
 ## Containers included
 
 * base (just an image, used by all containers)
